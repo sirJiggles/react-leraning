@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Featured = () => {  
+const Featured = () => {
   return (
     <div className="main-content">
       <h2>Featured: </h2>
