@@ -1,3 +1,4 @@
+import './styles.scss';
 import _ from 'lodash';
 
 function component () {

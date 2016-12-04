@@ -12,9 +12,14 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.scss$/
       }
     ]
   },
+
   devServer: {
     // contentBase: path.join(__dirname, 'dist'),
     // compress: true,
