@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 
 import App from './components/App';
 import Home from './components/Home';
@@ -17,6 +17,7 @@ const routes = (
       <Route path="about" component={About}/>
       <Route path="teachers" component={Teachers}/>
       <Route path="courses" component={Courses}>
+        <IndexRedirect to="html" />
         <Route path="html" component={HTML} />
         <Route path="css" component={CSS} />
         <Route path="javascript" component={JavaScript} />
