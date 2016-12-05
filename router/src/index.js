@@ -16,10 +16,12 @@ import Courses from './components/Courses';
 // Render
 render((
     <Router history={hashHistory}>
-      <Route path="/" component={Home}/>
-      <Route path="about" component={About}/>
-      <Route path="teachers" component={Teachers}/>
-      <Route path="courses" component={Courses}/>
+      <Route component={App}>
+        <Route path="/" component={Home}/>
+        <Route path="about" component={About}/>
+        <Route path="teachers" component={Teachers}/>
+        <Route path="courses" component={Courses}/>
+      </Route>
     </Router>
   ),
   document.getElementById('root')
