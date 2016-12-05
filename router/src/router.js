@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 
 import App from './components/App';
 import Home from './components/Home';
@@ -8,7 +8,7 @@ import Teachers from './components/Teachers';
 import Courses from './components/Courses';
 
 const routes = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route component={App}>
       <Route path="/" component={Home}/>
       <Route path="about" component={About}/>
