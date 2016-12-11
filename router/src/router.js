@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 
 import App from './components/App';
+import NotFound from './components/NotFound';
 import Home from './components/Home';
 import About from './components/About';
 import Teachers from './components/Teachers';
@@ -22,6 +23,7 @@ const routes = (
         <Route path="css" component={CSS} />
         <Route path="javascript" component={JavaScript} />
       </Route>
+      <Route path="*" component={NotFound} />
     </Route>
   </Router>
 );

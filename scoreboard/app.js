@@ -8,19 +8,19 @@ import './css/style.css';
 const INITIAL_STATE = {
   players: [
     {
-      name: "Jim Hoskins",
+      name: 'Jim Hoskins',
       score: 31,
     },
     {
-      name: "Andrew Chalkley",
+      name: 'Andrew Chalkley',
       score: 20,
     },
     {
-      name: "Alena Holligan",
+      name: 'Alena Holligan',
       score: 50,
     },
   ],
-}
+};
 
 
 const Scoreboard = React.createClass({
@@ -49,7 +49,7 @@ const Scoreboard = React.createClass({
         <Header players={this.state.players} />
         <div className="players">
           {this.state.players.map(function(player, index) {
-             return (
+            return (
                <Player
                  name={player.name}
                  score={player.score}
@@ -57,8 +57,8 @@ const Scoreboard = React.createClass({
                  onScoreChange={(delta) => this.onScoreChange(index, delta)}
                  onRemove={() => this.onRemovePlayer(index)}
                />
-             );
-           }.bind(this))}
+            );
+          }.bind(this))}
         </div>
         <AddPlayerForm onAdd={this.onAddPlayer} />
       </div>
@@ -100,7 +100,7 @@ function Stats(props) {
       </tbody>
 
     </table>
-  )
+  );
 }
 
 Stats.propTypes = {
@@ -168,7 +168,7 @@ const Stopwatch = React.createClass({
         }
         <button onClick={this.onReset}>Reset</button>
       </div>
-    )
+    );
   }
 });
 
@@ -210,7 +210,7 @@ function Counter(props) {
 Counter.propTypes = {
   onChange: React.PropTypes.func.isRequired,
   score: React.PropTypes.number.isRequired,
-}
+};
 
 
 const AddPlayerForm = React.createClass({
@@ -219,7 +219,7 @@ const AddPlayerForm = React.createClass({
   },
 
   getInitialState: function () {
-    return { name: "" };
+    return { name: '' };
   },
 
   onNameChange: function (e) {
@@ -228,9 +228,11 @@ const AddPlayerForm = React.createClass({
   },
 
   onSubmit: function (e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     this.props.onAdd(this.state.name);
-    this.setState({ name: "" });
+    this.setState({ name: '' });
   },
 
   render: function () {

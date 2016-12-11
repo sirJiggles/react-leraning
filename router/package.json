@@ -12,6 +12,7 @@
   "author": "@guilh & Treehouse students",
   "license": "ISC",
   "dependencies": {
+    "eslint-plugin-html": "^1.7.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^3.0.0"

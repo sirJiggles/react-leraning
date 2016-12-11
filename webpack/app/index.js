@@ -9,6 +9,8 @@ function component () {
     return item + ' ';
   });
 
+  console.log('something');
+
   return element;
 }
 
