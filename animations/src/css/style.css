@@ -88,9 +88,13 @@ li:hover button {
   transition: 0.5s ease-in;
 }
 
-
-
-/* end leave state */
-
-
 /* initial mounting */
+
+.slide-appear {
+  opacity: 0;
+}
+
+.slide-appear.slide-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
