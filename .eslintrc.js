@@ -14,8 +14,8 @@ module.exports = {
   },
   parserOptions:{
     'ecmaFeatures': {
-      experimentalObjectRestSpread: true,
-      jsx: true
+      jsx: true,
+      experimentalObjectRestSpread: true
     },
     'sourceType': 'module'
   },
