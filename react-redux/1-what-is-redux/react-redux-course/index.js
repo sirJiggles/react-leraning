@@ -6,4 +6,3 @@ render(
   <Scoreboard/>,
   document.getElementById('root')
 );
-
