@@ -13,6 +13,7 @@ import {
   TextInput,
   Slider
 } from 'react-native';
+import TipSelector from './tip-selector';
 
 export default class tipCalculator extends Component {
   constructor(props) {
@@ -40,6 +41,12 @@ export default class tipCalculator extends Component {
     this.setState(this.state);
   }
 
+  updateTipPercentage(percentage) {
+    this.state.tipPercentage = percentage;
+    this.setState(this.state);
+    this.calculateTip(this.state.amountTotal);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -55,6 +62,12 @@ export default class tipCalculator extends Component {
           </TextInput>
         </View>
 
+        <TipSelector
+          style={styles.row}
+          selectionChanged={this.updateTipPercentage.bind(this)}
+        />
+
+
         <View style={styles.row}>
           <Text style={styles.label}>
             Split Amongst {this.state.split}:
@@ -67,8 +80,8 @@ export default class tipCalculator extends Component {
             value={this.state.split}
             style={styles.slider}
             onValueChange={this.splitBill.bind(this)}
-          >
-          </Slider>
+            minimumTrackTintColor={'#60b7e2'}
+          />
         </View>
 
         <View style={styles.row}>
