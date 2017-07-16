@@ -11,7 +11,7 @@ const Header = (props) => {
       <Stopwatch />
     </div>
   );
-}
+};
 
 Header.propTypes = {
   players: PropTypes.array.isRequired,
