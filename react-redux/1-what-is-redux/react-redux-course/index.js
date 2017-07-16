@@ -8,7 +8,9 @@ import Scoreboard from './src/containers/Scoreboard';
 // lets create the store!
 // register the reducer with redux
 const store = createStore(
-  PlayerReducer
+  PlayerReducer,
+  // add the dev tools to the middleware pipeline!
+  window.devToolsExtension && window.devToolsExtension()
 );
 
 
