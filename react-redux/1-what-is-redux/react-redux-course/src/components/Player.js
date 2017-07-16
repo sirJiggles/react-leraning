@@ -3,7 +3,7 @@ import Counter from './Counter';
 
 const Player = (props) => {
   return (
-    <div className="player">
+    <div className="player" onClick={ () => props.selectPlayer(props.index) }>
       <div className="player-name">
         <a className="remove-player" onClick={ () => props.removePlayer(props.index) }>✖</a>
         {props.name}
@@ -25,6 +25,7 @@ Player.propTypes = {
   score: PropTypes.number.isRequired,
   removePlayer: PropTypes.func.isRequired,
   updatePlayerScore: PropTypes.func.isRequired,
+  selectPlayer: PropTypes.func.isRequired
 };
 
 export default Player;

@@ -5,14 +5,16 @@ import * as PlayerActionCreators from '../actions/player';
 import Header from '../components/Header';
 import Player from '../components/Player';
 import AddPlayerForm from '../components/AddPlayerForm';
+import PlayerDetail from '../components/PlayerDetail';
 
 class Scoreboard extends Component {
-  static PropTypes = {
-    players: PropTypes.array.isRequired
+  static propTypes = {
+    players: PropTypes.array.isRequired,
+    selectedPlayerIndex: PropTypes.number.isRequired
   };
 
   render() {
-    const { dispatch, players } = this.props;
+    const { dispatch, players, selectedPlayerIndex } = this.props;
 
     // action creators
     // bind action creators, take dispatch as second arg. makes sure when invoked
@@ -20,6 +22,7 @@ class Scoreboard extends Component {
     const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
     const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
     const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
+    const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
 
     // iterate over players and create a player component for each player
     const playerComponents = players.map((player, index) => (
@@ -30,6 +33,7 @@ class Scoreboard extends Component {
         key={player.name}
         updatePlayerScore={updatePlayerScore}
         removePlayer={removePlayer}
+        selectPlayer={selectPlayer}
       />
     ));
 
@@ -40,13 +44,18 @@ class Scoreboard extends Component {
           { playerComponents }
         </div>
         <AddPlayerForm addPlayer={addPlayer} />
+
+        <div className="player-detail">
+          <PlayerDetail selectedPlayerIndex={selectedPlayerIndex} players={players} />
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  players: state
+  players: state.players,
+  selectedPlayerIndex: state.selectedPlayerIndex
 });
 
 // first set is function we want to use to transform state to props
