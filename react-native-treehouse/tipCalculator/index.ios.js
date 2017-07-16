@@ -43,74 +43,97 @@ export default class tipCalculator extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          Amount Total:
-        </Text>
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            Amount Total:
+          </Text>
 
-        <TextInput
-          style={styles.textInput}
-          onChangeText={this.calculateTip.bind(this)}
-        >
-        </TextInput>
+          <TextInput
+            style={styles.textInput}
+            onChangeText={this.calculateTip.bind(this)}
+          >
+          </TextInput>
+        </View>
 
-        <Text>
-          Split Amongst: {this.state.split}
-        </Text>
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            Split Amongst {this.state.split}:
+          </Text>
 
-        <Slider
-          maximumValue={10}
-          minimumValue={1}
-          step={1}
-          value={this.state.split}
-          style={styles.slider}
-          onValueChange={this.splitBill.bind(this)}
-        >
-        </Slider>
+          <Slider
+            maximumValue={10}
+            minimumValue={1}
+            step={1}
+            value={this.state.split}
+            style={styles.slider}
+            onValueChange={this.splitBill.bind(this)}
+          >
+          </Slider>
+        </View>
 
-        <Text>
-          Amount per person:
-        </Text>
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            Amount per person:
+          </Text>
 
-        <Text style={styles.amount}>
-          {this.state.amountPerPerson}$
-        </Text>
+          <Text style={styles.amount}>
+            {this.state.amountPerPerson}$
+          </Text>
+        </View>
 
-        <Text>
-          Total Tip:
-        </Text>
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            Total Tip:
+          </Text>
 
-        <Text style={styles.amount}>
-          {this.state.tipTotal}$
-        </Text>
+          <Text style={styles.amount}>
+            {this.state.tipTotal}$
+          </Text>
+        </View>
       </View>
     );
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50
+  },
+  label: {
+    textAlign: 'right',
+    margin: 10,
+    flex: 2,
+    color: '#60b7e2'
+  },
   slider: {
-    width: '100%',
+    flex: 2,
     height: 40,
-    margin: 20
+    marginTop: 10,
+    marginBottom: 10
   },
   textInput: {
     textAlign: 'left',
     color: '#333',
     margin: 5,
     height: 50,
-    width: '100%',
+    flex: 2,
     borderColor: '#60b7e2',
     borderWidth: 1
   },
   amount: {
     fontWeight: 'bold',
-    textAlign: 'left'
+    textAlign: 'left',
+    flex: 2
   }
 });
 
