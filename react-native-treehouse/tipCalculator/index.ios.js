@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
+  Slider
 } from 'react-native';
 
 export default class tipCalculator extends Component {
@@ -20,13 +21,22 @@ export default class tipCalculator extends Component {
     this.state = {
       amountTotal: 0,
       tipPercentage: 0.15,
-      tipTotal: 0
+      tipTotal: 0,
+      split: 1,
+      amountPerPerson: 0
     };
   }
 
   calculateTip(value) {
-    this.state.amountTotal = value;
+    this.state.amountTotal = parseInt(value);
     this.state.tipTotal = value * this.state.tipPercentage.toFixed(2);
+    this.setState(this.state);
+    this.splitBill(this.state.split);
+  }
+
+  splitBill(value) {
+    this.state.split = value;
+    this.state.amountPerPerson = ((this.state.amountTotal + this.state.tipTotal) / value).toFixed(2);
     this.setState(this.state);
   }
 
@@ -36,11 +46,34 @@ export default class tipCalculator extends Component {
         <Text>
           Amount Total:
         </Text>
+
         <TextInput
           style={styles.textInput}
           onChangeText={this.calculateTip.bind(this)}
         >
         </TextInput>
+
+        <Text>
+          Split Amongst: {this.state.split}
+        </Text>
+
+        <Slider
+          maximumValue={10}
+          minimumValue={1}
+          step={1}
+          value={this.state.split}
+          style={styles.slider}
+          onValueChange={this.splitBill.bind(this)}
+        >
+        </Slider>
+
+        <Text>
+          Amount per person:
+        </Text>
+
+        <Text style={styles.amount}>
+          {this.state.amountPerPerson}$
+        </Text>
 
         <Text>
           Total Tip:
@@ -60,6 +93,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  slider: {
+    width: '100%',
+    height: 40,
+    margin: 20
   },
   textInput: {
     textAlign: 'left',
