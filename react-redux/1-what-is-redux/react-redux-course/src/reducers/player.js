@@ -43,21 +43,21 @@ export default function Player(state = initialState, action) {
 
   switch (action.type) {
   case PlayerActionTypes.ADD_PLAYER: {
-
+    const addPlayers = [
+      // concatinate and do not MUTATE the original state
+      // and add a new player onto the state
+      ...state.players,
+      {
+        name: action.name,
+        score: 0,
+        created: now,
+        updated: ''
+      }
+    ];
 
     return {
-      players: [
-        // concatinate and do not MUTATE the original state
-        // and add a new player onto the state
-        ...state.players,
-        {
-          name: action.name,
-          score: 0,
-          created: now,
-          updated: ''
-        }
-      ],
-      selectedPlayerIndex: state.selectedPlayerIndex
+      ...state,
+      players: addPlayers
     };
   }
   case PlayerActionTypes.REMOVE_PLAYER:
@@ -70,6 +70,7 @@ export default function Player(state = initialState, action) {
     };
   case PlayerActionTypes.UPDATE_PLAYER_SCORE:
     return {
+      ...state,
       players: state.players.map((player, index) => {
         // if we found the player to modify,
         // return a new object that is the modification of the existing
@@ -82,12 +83,11 @@ export default function Player(state = initialState, action) {
           };
         }
         return player;
-      }),
-      selectedPlayerIndex: state.selectedPlayerIndex
+      })
     };
   case PlayerActionTypes.SELECT_PLAYER:
     return {
-      players: state.players,
+      ...state,
       selectedPlayerIndex: action.index
     };
   default:
