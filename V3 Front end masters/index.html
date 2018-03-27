@@ -1,39 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>svideo</title>
 </head>
+
 <body>
   <div id="app"></div>
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.js"></script>
-
-  <script>
-    const ce = React.createElement
-
-    const myTitle = function(props) {
-      return (
-        ce('div', null,
-          ce('h1', {style: {color: props.colour}}, props.title)
-        )
-      )
-    }
-
-    const myFirstComponent = function() {
-      return ce('div', null,
-        ce(myTitle, {colour: 'YellowGreen', title: 'Game of thrones'}),
-        ce(myTitle, {colour: 'GreenYellow', title: 'Stranger things'}),
-        ce(myTitle, {colour: 'peru', title: 'Rick and morty'})
-      )
-    }
-
-    ReactDOM.render(
-      ce(myFirstComponent),
-      document.getElementById('app')
-    )
-  </script>
+  <script src="public/bundle.js"></script>
 </body>
+
 </html>
