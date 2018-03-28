@@ -1,11 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Search from '../Search';
 
 test('Search renders correctly', () => {
-  const component = renderer.create(<Search />);
-  const tree = component.toJSON();
+  // shallow will stub out child components
+  // so if tests fail in child items, they wont fail up here
+  const component = shallow(<Search />);
 
   // should match the snapshot that is generated!
-  expect(tree).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });
