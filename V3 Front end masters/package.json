@@ -6,7 +6,8 @@
     "watch": "webpack --watch",
     "serve": "webpack-dev-server",
     "test": "jest",
-    "snapshots": "jest -u"
+    "snapshots": "jest -u",
+    "coverage": "jest --coverage"
   },
   "jest": {
     "snapshotSerializers": ["jest-serializer-enzyme"]
