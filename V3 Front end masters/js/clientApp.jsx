@@ -4,16 +4,21 @@ import { render } from 'react-dom';
 const ce = React.createElement;
 
 const myTitle = function myTitle(props) {
-  return ce('div', null, ce('h1', { style: { color: props.color } }, props.title));
+  return (
+    <div>
+      <h1 style={{ color: props.color }}>{props.title}</h1>
+    </div>
+  );
 };
 
+// composit component "comoonent of components"
 const myFirstComponent = function myFirstComponent() {
-  return ce(
-    'div',
-    null,
-    ce(myTitle, { color: 'YellowGreen', title: 'Game of thrones' }),
-    ce(myTitle, { color: 'GreenYellow', title: 'Stranger things' }),
-    ce(myTitle, { color: 'peru', title: 'Rick and morty' })
+  return (
+    <div id="my-sample-component">
+      <myTitle color="YellowGreen" title="Game of thrones" />
+      <myTitle color="GreenYellow" title="Stranger things" />
+      <myTitle color="peru" title="Rick and morty" />
+    </div>
   );
 };
 
