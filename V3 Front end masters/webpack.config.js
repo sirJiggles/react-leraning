@@ -18,7 +18,9 @@ module.exports = {
   },
   devServer: {
     // Name of the path on the server
-    publicPath: '/public/'
+    publicPath: '/public/',
+    // if you dont know something, send to client
+    historyApiFallback: true
   },
   module: {
     rules: [
