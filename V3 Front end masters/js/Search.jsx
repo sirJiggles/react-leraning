@@ -4,12 +4,12 @@ import ShowCard from './ShowCard';
 
 class Search extends Component {
   state = {
-    searchTerm: 'this is a sample string'
+    searchTerm: ''
   };
-  // called when we have a change on the input
 
   // this is transform class props and solves us having to do
   // this.handleOnSearchChange = this.handleOnSearchChange.bind(this); in the constructor!
+  // https://github.com/tc39/proposal-class-fields
   handleOnSearchChange = event => {
     // setState "hey you need to rerender"
     // dont use this.state = ...
@@ -33,7 +33,14 @@ class Search extends Component {
           />
         </header>
         <div>
-          {preload.shows.map(show => <ShowCard key={show.imdbID} {...show} />)}
+          {preload.shows
+            .filter(
+              show =>
+                `${show.title} ${show.descriprion}`
+                  .toUpperCase()
+                  .indexOf(this.state.searchTerm.toUpperCase()) >= 0
+            )
+            .map(show => <ShowCard key={show.imdbID} {...show} />)}
         </div>
       </div>
     );
