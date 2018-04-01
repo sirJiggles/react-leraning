@@ -1,6 +1,6 @@
 public/bundle.js
 node_modules/
-flow-typed/npm/
+flow-typed/
 .eslintcache
 coverage/
 .nyc_output
