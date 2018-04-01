@@ -1,12 +1,19 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './js/clientApp.jsx',
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './js/clientApp.jsx'
+  ],
   devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -17,11 +24,13 @@ module.exports = {
     chunks: true
   },
   devServer: {
+    hot: true,
     // Name of the path on the server
     publicPath: '/public/',
     // if you dont know something, send to client
     historyApiFallback: true
   },
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
       {

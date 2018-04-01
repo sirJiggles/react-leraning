@@ -4,7 +4,7 @@
     "build": "webpack",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --watch",
-    "serve": "webpack-dev-server",
+    "dev": "webpack-dev-server",
     "test": "jest",
     "snapshots": "jest -u",
     "coverage": "jest --coverage"

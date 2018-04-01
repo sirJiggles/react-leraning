@@ -1,22 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Landing from './Landing';
-import Search from './Search';
+import App from './App';
 
-const FourOhFour = () => <h1>404</h1>;
+const renderApp = () => {
+  // this is a browser concernt that we cannot do on things like
+  // server side rendering
+  render(<App />, document.getElementById('app'));
+};
 
-const App = () => (
-  <BrowserRouter>
-    <div className="app">
-      {/* Only render ones that match */}
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/search" component={Search} />
-        <Route component={FourOhFour} />
-      </Switch>
-    </div>
-  </BrowserRouter>
-);
+renderApp();
 
-render(<App />, document.getElementById('app'));
+// If hot module replacement is enabled, when app changes, call this function
+// All the others are fine but the top level one needs to be told how to re-render
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    renderApp();
+  });
+}
