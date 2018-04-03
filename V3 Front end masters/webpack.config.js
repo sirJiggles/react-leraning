@@ -7,16 +7,16 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './js/clientApp.jsx'
+    './js/clientApp.tsx'
   ],
-  devtool: 'cheap-eval-source-map',
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.ts', '.tsx', '.json']
   },
   stats: {
     colors: true,
@@ -33,16 +33,26 @@ module.exports = {
   plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.tsx?$/,
+      //   loader: 'eslint-loader',
+      //   exclude: '/node_modules/'
+      // },
       {
         enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
+        test: /\.tsx?$/,
+        loader: 'source-map-loader',
         exclude: '/node_modules/'
       },
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader'
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
       }
     ]
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDom'
   }
 };

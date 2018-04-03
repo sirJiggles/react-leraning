@@ -1,7 +1,7 @@
-// @flow
-import React, { Component } from 'react';
+import * as React, { Component, SyntheticEvent } from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
+import { InputType } from 'zlib';
 
 class Search extends Component {
   state = {
@@ -11,12 +11,16 @@ class Search extends Component {
   // this is transform class props and solves us having to do
   // this.handleOnSearchChange = this.handleOnSearchChange.bind(this); in the constructor!
   // https://github.com/tc39/proposal-class-fields
-  handleOnSearchChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
+  handleOnSearchChange = (
+    event: SyntheticEvent<HTMLInputElement> & { target: HTMLInputElement }
+  ) => {
     // setState "hey you need to rerender"
     // dont use this.state = ...
     this.setState({
       searchTerm: event.target.value
     });
+
+    //
   };
   render() {
     return (

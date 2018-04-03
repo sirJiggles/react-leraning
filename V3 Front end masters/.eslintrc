@@ -2,14 +2,16 @@
   "extends": [
     "airbnb",
     "prettier",
-    "prettier/react",
-    "plugin:flowtype/recommended"
+    "prettier/react"
   ],
   "plugins": [
-    "flowtype",
+    "typescript",
     "prettier"
   ],
-  "parser": "babel-eslint",
+  "rules": {
+    "typescript/rule-name": "error"
+  },
+  "parser": "typescript-eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
