@@ -1,12 +1,11 @@
 {
   "extends": [
     "airbnb",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "plugins": [
-    "typescript",
-    "prettier"
+    "prettier",
+    "typescript"
   ],
   "rules": {
     "typescript/rule-name": "error"

@@ -1,7 +1,8 @@
-import * as React, { Component, SyntheticEvent } from 'react';
+import React, { Component, SyntheticEvent } from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
 import { InputType } from 'zlib';
+import Show from './interfaces/Show';
 
 class Search extends Component {
   state = {
@@ -40,12 +41,12 @@ class Search extends Component {
         <div>
           {preload.shows
             .filter(
-              show =>
-                `${show.title} ${show.descriprion}`
+              (show: Show) =>
+                `${show.title} ${show.description}`
                   .toUpperCase()
                   .indexOf(this.state.searchTerm.toUpperCase()) >= 0
             )
-            .map(show => <ShowCard key={show.imdbID} {...show} />)}
+            .map((show: Show) => <ShowCard key={show.imdbID} {...show} />)}
         </div>
       </div>
     );

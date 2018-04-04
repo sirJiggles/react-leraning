@@ -9,5 +9,9 @@
   },
   "include": [
     "./js/**/*"
+  ],
+  "exclude": [
+    "./js/__tests__/**/*",
+    "node_modules"
   ]
 }
