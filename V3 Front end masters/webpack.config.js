@@ -2,10 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   context: __dirname,
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:8081',
     'webpack/hot/only-dev-server',
     './js/clientApp.tsx'
   ],
@@ -33,26 +34,15 @@ module.exports = {
   plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
-      // {
-      //   enforce: 'pre',
-      //   test: /\.tsx?$/,
-      //   loader: 'eslint-loader',
-      //   exclude: '/node_modules/'
-      // },
-      {
-        enforce: 'pre',
-        test: /\.tsx?$/,
-        loader: 'source-map-loader',
-        exclude: '/node_modules/'
-      },
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
-      }
+      },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
   },
   externals: {
     react: 'React',
-    'react-dom': 'ReactDom'
+    'react-dom': 'ReactDOM'
   }
 };

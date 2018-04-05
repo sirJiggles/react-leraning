@@ -1,4 +1,4 @@
-export default interface Show {
+export default interface InterfaceShow {
   title: string,
   year: string,
   description: string,

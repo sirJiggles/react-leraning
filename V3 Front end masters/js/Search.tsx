@@ -1,29 +1,15 @@
-import React, { Component, SyntheticEvent } from 'react';
+import { Component, SyntheticEvent } from 'react';
+import * as React from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
-import { InputType } from 'zlib';
-import Show from './interfaces/Show';
+import InterfaceShow from './interfaces/Show';
 
 class Search extends Component {
-  state = {
+  public state = {
     searchTerm: ''
   };
 
-  // this is transform class props and solves us having to do
-  // this.handleOnSearchChange = this.handleOnSearchChange.bind(this); in the constructor!
-  // https://github.com/tc39/proposal-class-fields
-  handleOnSearchChange = (
-    event: SyntheticEvent<HTMLInputElement> & { target: HTMLInputElement }
-  ) => {
-    // setState "hey you need to rerender"
-    // dont use this.state = ...
-    this.setState({
-      searchTerm: event.target.value
-    });
-
-    //
-  };
-  render() {
+  public render() {
     return (
       <div className="search">
         {/* <pre><code>{JSON.stringify(preload, null, 4)}</code></pre> */}
@@ -41,16 +27,31 @@ class Search extends Component {
         <div>
           {preload.shows
             .filter(
-              (show: Show) =>
+              (show: InterfaceShow) =>
                 `${show.title} ${show.description}`
                   .toUpperCase()
                   .indexOf(this.state.searchTerm.toUpperCase()) >= 0
             )
-            .map((show: Show) => <ShowCard key={show.imdbID} {...show} />)}
+            .map((show: InterfaceShow) => <ShowCard key={show.imdbID} {...show} />)}
         </div>
       </div>
     );
   }
+
+  // this is transform class props and solves us having to do
+  // this.handleOnSearchChange = this.handleOnSearchChange.bind(this); in the constructor!
+  // https://github.com/tc39/proposal-class-fields
+  private  handleOnSearchChange = (
+    event: SyntheticEvent<HTMLInputElement> & { target: HTMLInputElement }
+  ) => {
+    // setState "hey you need to rerender"
+    // dont use this.state = ...
+    this.setState({
+      searchTerm: event.target.value
+    });
+
+    //
+  };
 }
 
 export default Search;

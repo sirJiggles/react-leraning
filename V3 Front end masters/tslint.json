@@ -1,11 +1,11 @@
 {
+  "defaultSeverity": "error",
   "extends": [
     "tslint:recommended",
     // "tslint-react-recommended",
     "tslint-config-prettier"
   ],
   "rules": {
-    "ordered-imports": false,
-    "jsx": true
-  },
+    "ordered-imports": false
+  }
 }
