@@ -2,7 +2,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import Search from '../Search';
 import ShowCard from '../ShowCard';
-import data from '../../data.json';
+import data from '../data';
 
 test('Search renders correctly', () => {
   // shallow will stub out child components

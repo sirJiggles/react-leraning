@@ -1,6 +1,6 @@
 import { Component, SyntheticEvent } from 'react';
 import * as React from 'react';
-import preload from '../data.json';
+import preload from './data'
 import ShowCard from './ShowCard';
 import InterfaceShow from './interfaces/Show';
 
