@@ -1,14 +1,13 @@
 import * as React from 'react';
 import ShowCard from './ShowCard';
 import InterfaceShow from './interfaces/Show';
+import Header from './Header';
 
 const Detailts = (props: InterfaceShow) => {
   const { title, year, poster, description, trailer } = props;
   return (
     <div className="details">
-      <header>
-        <h1>svideo</h1>
-      </header>
+      <Header />
       <section>
         <h1>{title}</h1>
         <h2>({year})</h2>

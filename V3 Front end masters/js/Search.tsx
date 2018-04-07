@@ -2,6 +2,7 @@ import { Component, SyntheticEvent } from 'react';
 import * as React from 'react';
 import ShowCard from './ShowCard';
 import InterfaceShow from './interfaces/Show';
+import Header from './Header';
 
 class Search extends Component {
   public state = {
@@ -16,17 +17,7 @@ class Search extends Component {
     return (
       <div className="search">
         {/* <pre><code>{JSON.stringify(preload, null, 4)}</code></pre> */}
-        <header>
-          <h1>
-            svideo
-          </h1>
-          <input
-            onChange={this.handleOnSearchChange}
-            type="text"
-            placeholder="Search"
-            value={this.state.searchTerm}
-          />
-        </header>
+        <Header showSearch={true} handleOnSearchChange={this.handleOnSearchChange} searchTerm={this.state.searchTerm}  />
         <div>
           {this.props.shows
             .filter(
