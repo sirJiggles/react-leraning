@@ -1,6 +1,5 @@
 import { Component, SyntheticEvent } from 'react';
 import * as React from 'react';
-import preload from './data'
 import ShowCard from './ShowCard';
 import InterfaceShow from './interfaces/Show';
 
@@ -8,6 +7,10 @@ class Search extends Component {
   public state = {
     searchTerm: ''
   };
+
+  public props: {
+    shows: InterfaceShow[]
+  }
 
   public render() {
     return (
@@ -25,7 +28,7 @@ class Search extends Component {
           />
         </header>
         <div>
-          {preload.shows
+          {this.props.shows
             .filter(
               (show: InterfaceShow) =>
                 `${show.title} ${show.description}`

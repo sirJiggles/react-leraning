@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import InterfaceShow from './interfaces/Show';
 
 // Tagged template literal
 // the styled is a function this func returns a div that
@@ -20,7 +21,7 @@ const Image = styled.img`
   margin-right: 10px;
 `;
 
-const ShowCard = (props: { poster: string, title: string, year: string, description: string }) => (
+const ShowCard = (props: InterfaceShow) => (
   <Wrapper>
     <Image src={`/public/img/posters/${props.poster}`} alt={`${props.title} Show Poster`} />
     <div>

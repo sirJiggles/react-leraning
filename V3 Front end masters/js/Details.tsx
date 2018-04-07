@@ -1,8 +1,10 @@
 import * as React from 'react';
+import ShowCard from './ShowCard';
+import InterfaceShow from './interfaces/Show';
 
-const Detailts = () => (
+const Detailts = (props: InterfaceShow) => (
   <div className="details">
-    <h1>Hi</h1>
+    <ShowCard {...props} />
   </div>
 );
 
