@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   mode: 'development',
   context: __dirname,
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8081',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './js/clientApp.tsx'
   ],
@@ -31,12 +32,17 @@ module.exports = {
     // if you dont know something, send to client
     historyApiFallback: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+  plugins: [
+    new CheckerPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ],
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader'
+        loaders: ['ts-loader'],
+        exclude: /(node_modules|bower_components)/
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
