@@ -11,7 +11,7 @@ class Search extends Component {
 
   public props: {
     shows: InterfaceShow[]
-  }
+  };
 
   public render() {
     return (
