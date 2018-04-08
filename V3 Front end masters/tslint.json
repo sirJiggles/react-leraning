@@ -2,10 +2,12 @@
   "defaultSeverity": "error",
   "extends": [
     "tslint:recommended",
-    // "tslint-react-recommended",
+    "tslint-react",
+    "tslint-eslint-rules",
     "tslint-config-prettier"
   ],
   "rules": {
-    "ordered-imports": false
+    "ordered-imports": false,
+    "object-literal-sort-keys": false
   }
 }
