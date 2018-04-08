@@ -16,11 +16,11 @@
       "js"
     ],
     "setupFiles": [
-      "<rootDir>/js/__tests__/shim.js",
-      "<rootDir>/js/__tests__/setup.js"
+      "<rootDir>/shim.js",
+      "<rootDir>/setup.js"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/js/__tests__/preprocessor.js"
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
     },
     "testMatch": [
       "**/__tests__/*.+(ts|tsx|js)"
