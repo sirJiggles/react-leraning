@@ -34,6 +34,10 @@
   version "9.6.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.1.tgz#e2d374ef15b315b48e7efc308fa1a7cd51faa06c"
 
+"@types/react-addons-perf@^0.14.18":
+  version "0.14.18"
+  resolved "https://registry.yarnpkg.com/@types/react-addons-perf/-/react-addons-perf-0.14.18.tgz#9b17823b4eb6052ac3e3d91d35f409a9d3adabce"
+
 "@types/react-dom@^16.0.4":
   version "16.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.4.tgz#2e8fd45f5443780ed49bf2cdd9809e6091177a7d"
@@ -6216,7 +6220,7 @@ rc@^1.0.1, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-addons-perf@15.4.2:
+react-addons-perf@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-addons-perf/-/react-addons-perf-15.4.2.tgz#110bdcf5c459c4f77cb85ed634bcd3397536383b"
   dependencies:
