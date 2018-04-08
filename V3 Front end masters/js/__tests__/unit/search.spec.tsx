@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import Search from '../Search';
-import ShowCard from '../ShowCard';
-import Header from '../Header';
-import data from '../data';
+import Search from '../../Search';
+import ShowCard from '../../ShowCard';
+import Header from '../../Header';
+import data from '../../data';
 
 test('Search renders correctly', () => {
   // shallow will stub out child components
@@ -19,10 +19,8 @@ test('Search should remember correct amount of shows', () => {
   expect(component.find(ShowCard).length).toEqual(data.shows.length);
 });
 
-test('Search should render correct based on search term', () => {
+test('Search should render a header', () => {
   const searchWord = 'black';
   const component = shallow(<Search shows={data.shows} />);
   expect(component.find(Header).length).toEqual(1);
-  // component.find(Header).find('input').simulate('change', { target: { value: searchWord } });
-  // expect(component.find(ShowCard).length).toEqual(2);
 });

@@ -16,14 +16,18 @@
       "js"
     ],
     "setupFiles": [
-      "<rootDir>/shim.js",
-      "<rootDir>/setup.js"
+      "<rootDir>/js/__tests__/utils/shim.js",
+      "<rootDir>/js/__tests__/utils/setup.js"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+      "^.+\\.(ts|tsx)$": "<rootDir>/js/__tests__/utils/preprocessor.js"
     },
     "testMatch": [
-      "**/__tests__/*.+(ts|tsx|js)"
+      "**/__tests__/*.+(ts|tsx)",
+      "**/__tests__/**/*.+(ts|tsx)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "dependencies": {
