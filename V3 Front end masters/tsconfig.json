@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    // had to put these in because of conflicts with node types ...
     "types": [
       "react",
       "jest",
