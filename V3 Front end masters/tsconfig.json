@@ -5,7 +5,8 @@
       "jest",
       "webpack-env",
       "react-router-dom",
-      "react-dom"
+      "react-dom",
+      "react-redux"
     ],
     "outDir": "./dist/",
     "sourceMap": true,
@@ -17,7 +18,8 @@
       "es2015"
     ],
     "jsx": "react",
-    "declaration": true
+    "declaration": true,
+    "experimentalDecorators": true
   },
   "include": [
     "./js/**/*",
