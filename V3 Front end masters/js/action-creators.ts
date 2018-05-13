@@ -1,5 +1,5 @@
-import Actions from './enums/Action';
 import InterfaceAction from './interfaces/Action';
+import Actions from './enums/Actions';
 
 export function setSearchTerm(searchTerm: string): InterfaceAction {
   return {

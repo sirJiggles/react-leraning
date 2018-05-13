@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { Reducer } from 'redux';
 import { Link } from 'react-router-dom';
 
-export const mapStateToProps = (state: { searchTerm: string }) => ({
-  searchTerm: state.searchTerm
-});
-
+// this is how you would do it using a generator
 // @connect(mapStateToProps)
 // class Landing extends Component {
 //   public render() {
@@ -28,7 +26,8 @@ const Landing = () => (
 );
 
 // just FYI the ({}) means return the object, not open a func body in ES6
+const mapStateToProps: any = (state: any) => ({
+  searchTerm: state.searchTerm
+});
 
 export default connect(mapStateToProps)(Landing);
-
-// export default Landing

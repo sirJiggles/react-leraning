@@ -11,7 +11,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './js/clientApp.tsx'
   ],
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
