@@ -21,9 +21,19 @@ import { History } from 'history';
 // }
 
 class Landing extends Component {
-  props: { searchTerm: string, handleSearchTermChange: (event: any) => void, history: History };
+  props: {
+    searchTerm: string,
+    handleSearchTermChange: (event: any) => void,
+    history: History,
+    clearSearch: () => void
+  };
   goToSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    this.props.history.push('/search');
+  };
+  browseAll = (event: React.SyntheticEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    this.props.clearSearch();
     this.props.history.push('/search');
   };
   render() {
@@ -37,7 +47,7 @@ class Landing extends Component {
             placeholder="Search"
             onChange={this.props.handleSearchTermChange}
           />
-          <Link to="/search">Browse all</Link>
+          <button onClick={this.browseAll}>Browse all</button>
         </form>
       </div>
     );
@@ -51,6 +61,9 @@ const mapStateToProps: any = (state: { searchTerm: string }) => ({
 const mapDispatchToProps = (dispatch: Function) => ({
   handleSearchTermChange(event: any) {
     dispatch(setSearchTerm(event.target.value));
+  },
+  clearSearch() {
+    dispatch(setSearchTerm(''));
   }
 });
 

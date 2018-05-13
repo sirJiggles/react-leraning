@@ -476,7 +476,7 @@ html {
   min-width: 300px;
 }
 
-.landing > a {
+.landing > button {
   margin-top: 15px;
   padding: 10px 40px;
   background-color: #333;
@@ -487,11 +487,11 @@ html {
   border-radius: 4px;
 }
 
-.landing > a:hover, .landing > a:focus {
+.landing > button:hover, .landing > button:focus {
   background-color: #666;
 }
 
-.landing > a:active {
+.landing > button:active {
   background-color: #fafafa;
   color: #333;
   border-color: #333;
