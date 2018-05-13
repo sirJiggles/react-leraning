@@ -1,23 +1,24 @@
 import { SyntheticEvent } from 'react';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSearchTerm } from './action-creators';
 
-const Header = (
-  props: {
-    showSearch?: boolean,
-    handleOnSearchChange?: (
-      event: SyntheticEvent<HTMLInputElement> & { target: HTMLInputElement }
-    ) => void,
-    searchTerm?: string
-  } = {
-    showSearch: false
-  }
-) => {
+const Header = (props: {
+  showSearch?: boolean,
+  searchTerm: string,
+  handleSearchTermChange: (event: any) => void
+}) => {
   let utilSpace;
-  const { handleOnSearchChange, searchTerm } = props;
+  const { handleSearchTermChange, searchTerm } = props;
   if (props.showSearch) {
     utilSpace = (
-      <input onChange={handleOnSearchChange} type="text" placeholder="Search" value={searchTerm} />
+      <input
+        onChange={handleSearchTermChange}
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+      />
     );
   } else {
     utilSpace = (
@@ -39,5 +40,14 @@ const Header = (
     </header>
   );
 };
+const mapStateToProps = (state: { searchTerm: string }) => ({
+  searchTerm: state.searchTerm
+});
 
-export default Header;
+const mapDispatchToProps = (dispatch: Function) => ({
+  handleSearchTermChange(event: any) {
+    dispatch(setSearchTerm(event.target.value));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
