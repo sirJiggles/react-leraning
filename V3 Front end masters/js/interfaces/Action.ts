@@ -1,8 +1,13 @@
 import Actions from '../enums/Actions';
 import { Action } from 'redux';
+import InterfaceShow from './Show';
 
-export default interface InterfaceAction {
-  type: Actions,
-  payload: any
+export interface InterfaceAction extends Action {
+  type: any,
+  payload: string
 }
 
+export interface InterfaceShowAction extends Action {
+  type: any,
+  payload: InterfaceShow
+}

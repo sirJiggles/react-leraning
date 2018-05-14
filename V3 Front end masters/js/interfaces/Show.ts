@@ -4,5 +4,6 @@ export default interface InterfaceShow {
   description: string,
   poster: string,
   imdbID: string,
-  trailer: string
+  trailer: string,
+  rating?: string
 }
