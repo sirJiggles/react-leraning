@@ -47,8 +47,8 @@ class Landing extends Component {
             placeholder="Search"
             onChange={this.props.handleSearchTermChange}
           />
-          <button onClick={this.browseAll}>Browse all</button>
         </form>
+        <button onClick={this.browseAll}>Browse all</button>
       </div>
     );
   }
