@@ -1,28 +1,14 @@
 import InterfaceAction from './interfaces/Action';
 import Actions from './enums/Actions';
-import { bindActionCreators, Action } from 'redux';
+import { combineReducers, Action } from 'redux';
 
-const DEFAULT_STATE = {
-  searchTerm: ''
-};
+// single resposibility reducers now, just looks at search term
+const searchTerm = (state = '', action: any) =>
+  action.type === Actions.SET_SEARCH_TERM ? action.payload : state;
 
-// the reducer for set search term
-const setSearchTerm = (state: {}, action: any) => {
-  // merge the state into a new obj using spread
-  return { ...state, searchTerm: action.payload };
-};
-
-// top level of every store is one reducer, no side effects.
-// call it 1000 times will always return same thing
-// so given same in get same out, no modify state
-// ROOT REDUCER DELEGATES TO SUB REDUCER, lol its just a function ...
-const rootReducer = (state = DEFAULT_STATE, action: any) => {
-  switch (action.type) {
-    case Actions.SET_SEARCH_TERM:
-      return setSearchTerm(state, action);
-    default:
-      return state;
-  }
-};
+// combine reducers is great as we need no switch case and object merging anymore!
+// and we can silo off little reducers
+// can still use a root reducer if you like later on
+const rootReducer = combineReducers({ searchTerm });
 
 export default rootReducer;
