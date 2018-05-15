@@ -25,7 +25,7 @@ export function getAPIDetails(imdbID: string) {
   return (dispatch: Function) => {
     axios
       .get(`http://localhost:3000/${imdbID}`)
-      .then(response => {
+      .then((response: { data: InterfaceShow }) => {
         // now resolve and give the action with the data from the API req
         dispatch(addAPIData(response.data));
       })

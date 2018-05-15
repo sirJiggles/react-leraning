@@ -1,39 +1,33 @@
 import * as React from 'react'
-import axios from 'axios'
 import { Component } from 'react'
+import { connect } from 'react-redux'
+import { getAPIDetails } from './action-creators'
 import ShowCard from './ShowCard'
 import InterfaceShow from './interfaces/Show'
 import Header from './Header'
 import Spinner from './Spinner'
 
-interface InterfaceAPIResponse {
-  data: {
-    rating: string
-  }
-}
 
-class Detailts extends Component {
-  public props: InterfaceShow
-  public state = {
-    apiData: {
-      rating: ''
-    }
+class Details extends Component {
+  public props: {
+    rating: string,
+    show: InterfaceShow,
+    getAPIData: () => void
   }
 
   public componentDidMount() {
-    axios.get(`http://localhost:3000/${this.props.imdbID}`)
-      .then((response: InterfaceAPIResponse) => {
-        this.setState(
-          {apiData: {rating: response.data.rating} })
-      });
+    // if we already have data then no need to load from the api
+    if (this.props.rating === '') {
+      this.props.getAPIData()
+    }
   }
 
   public render() {
-    const { title, year, poster, description, trailer } = this.props;
+    const { title, year, poster, description, trailer } = this.props.show;
     let ratingComponent
 
-    if (this.state.apiData.rating) {
-      ratingComponent = <h3>{this.state.apiData.rating}</h3>
+    if (this.props.rating !== '') {
+      ratingComponent = <h3>{this.props.rating}</h3>
     } else {
       ratingComponent = <Spinner />
     }
@@ -63,4 +57,20 @@ class Detailts extends Component {
     );
   }
 }
-export default Detailts
+
+const mapStateToProps = (state: {apiData: {[key: string]: InterfaceShow}}, ownProps: {show: InterfaceShow, rating: string}) => {
+  // if we have the data in the state then just get what we already have, else no apiData
+  const apiData = state.apiData[ownProps.show.imdbID] ? state.apiData[ownProps.show.imdbID] : {rating: ''}
+
+  return {
+    rating: apiData.rating
+  }
+}
+
+const mapDispatchToProps = (dispatch: Function, ownProps: {show: InterfaceShow, rating: string}) => ({
+  getAPIData() {
+    dispatch(getAPIDetails(ownProps.show.imdbID))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details)
