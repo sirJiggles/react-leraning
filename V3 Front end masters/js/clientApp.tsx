@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 const renderApp = () => {
   // this is a browser concernt that we cannot do on things like
   // server side rendering
-  render(<App />, document.getElementById('app'));
+  render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('app'));
 };
 
 renderApp();
