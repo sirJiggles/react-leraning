@@ -4,9 +4,7 @@ exports[`Search renders correctly 1`] = `
 <div
   className="search"
 >
-  <Header
-    handleOnSearchChange={[Function]}
-    searchTerm=""
+  <Connect(Header)
     showSearch={true}
   />
   <div>
