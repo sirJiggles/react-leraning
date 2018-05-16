@@ -8,8 +8,12 @@ const ReactRouter = require('react-router-dom');
 // const ServerStyleSheet = require('styled-components');
 const _ = require('lodash');
 const fs = require('fs');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpack = require('webpack');
 // as this becomes an object with one key, default
 const App = require('./js/App').default;
+const webpackConfig = require('./webpack.config');
 
 const staticRouter = ReactRouter.StaticRouter;
 // const sheet = new ServerStyleSheet();
@@ -19,6 +23,15 @@ const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
 
 const server = express();
+
+// Hot module replacement
+const compiler = webpack(webpackConfig);
+server.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath
+  })
+);
+server.use(webpackHotMiddleware(compiler));
 
 // our static directory just like webpack config
 server.use('/public', express.static('./public'));

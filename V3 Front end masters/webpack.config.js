@@ -6,9 +6,10 @@ module.exports = {
   mode: 'development',
   context: __dirname,
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    // 'react-hot-loader/patch',
+    // 'webpack-dev-server/client?http://localhost:8080',
+    // 'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client?path=?__webpack_hmr&timeout=2000',
     './js/clientApp.tsx'
   ],
   devtool: 'inline-source-map',
