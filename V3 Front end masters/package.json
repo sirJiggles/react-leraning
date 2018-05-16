@@ -5,6 +5,7 @@
     "lint": "tslint js/**/*.{ts,tsx} js/*.{ts,tsx}",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server",
+    "static": "NODE_ENV=server ts-node server.js",
     "test": "jest",
     "snapshots": "jest -u",
     "coverage": "jest --coverage"

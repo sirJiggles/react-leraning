@@ -6,10 +6,11 @@ module.exports = {
   mode: 'development',
   context: __dirname,
   entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:8080',
-    // 'webpack/hot/only-dev-server',
-    'webpack-hot-middleware/client?path=?__webpack_hmr&timeout=2000',
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    // this is hot module replacement when server side rendered, would obviously be a prod webpack config
+    // 'webpack-hot-middleware/client?path=?__webpack_hmr&timeout=2000',
     './js/clientApp.tsx'
   ],
   devtool: 'inline-source-map',
