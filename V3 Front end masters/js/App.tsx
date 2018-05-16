@@ -7,6 +7,7 @@ import Search from './Search';
 import Details from './Details';
 import preload from './data';
 import store from './store';
+import InterfaceShow from './interfaces/Show';
 
 const FourOhFour = () => <h1>404</h1>;
 
@@ -26,7 +27,10 @@ const App = () => (
           <Route
             path="/details/:id"
             component={(props: RouteComponentProps<{ id: string }>) => (
-              <Details {...preload.shows.find(show => props.match.params.id === show.imdbID)} />
+              <Details
+                show={preload.shows.find(show => props.match.params.id === show.imdbID)}
+                rating=""
+              />
             )}
           />
           <Route component={FourOhFour} />
