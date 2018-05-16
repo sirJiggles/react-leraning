@@ -32,5 +32,4 @@ test('when fire search action, with term should show correct results', () => {
   //   .find('input')
   //   .simulate('change', { target: { value: searchWord } });
   expect(component.find('.show-card').length).toEqual(count);
-  // component.unmount();
 });
