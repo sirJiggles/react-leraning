@@ -2,14 +2,15 @@ import reducers from '../../reducers';
 
 // pasted from redux dev tools!
 test('setSearchTerm', () => {
-  let state;
-  state = reducers({ searchTerm: '', apiData: {} }, { type: 'setSearchTerm', payload: 'black' });
+  const state = reducers(
+    { searchTerm: '', apiData: {} },
+    { type: 'setSearchTerm', payload: 'black' }
+  );
   expect(state).toEqual({ searchTerm: 'black', apiData: {} });
 });
 
 test('addAPIData', () => {
-  let state;
-  state = reducers(
+  const state = reducers(
     { searchTerm: '', apiData: {} },
     {
       type: 'addAPIData',
