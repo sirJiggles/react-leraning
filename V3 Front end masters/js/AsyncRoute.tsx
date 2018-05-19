@@ -18,6 +18,8 @@ class AsyncRoute extends Component {
   // this is a class prop not in state as we do not care about changes for render
   component: React.ComponentClass = null;
 
+  // transform class props plugin seems not to be working here
+  // @TODO come back and investigate how to fix, seems to be an issue with code splitting and TS
   constructor(props: { props: any, loadingPromise: Promise<{ default: React.ComponentClass }> }) {
     super(props);
     this.state = {
