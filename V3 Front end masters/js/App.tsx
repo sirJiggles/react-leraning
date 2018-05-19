@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { RouteComponentProps, RouteProps } from 'react-router';
 import { Provider } from 'react-redux';
-import Search from './Search';
-import Details from './Details';
 import preload from './data';
 import store from './store';
 import InterfaceShow from './interfaces/Show';
@@ -26,15 +24,24 @@ const App = () => (
         <Route
           path="/search"
           component={(props: RouteComponentProps<any>) => (
-            <Search shows={preload.shows} {...props} />
+            <AsyncRoute
+              props={Object.assign({
+                shows: preload.shows,
+                props
+              })}
+              loadingPromise={import('./Search')}
+            />
           )}
         />
         <Route
           path="/details/:id"
           component={(props: RouteComponentProps<{ id: string }>) => (
-            <Details
-              show={preload.shows.find(show => props.match.params.id === show.imdbID)}
-              rating=""
+            <AsyncRoute
+              props={Object.assign({
+                show: preload.shows.find(show => props.match.params.id === show.imdbID),
+                rating: ''
+              })}
+              loadingPromise={import('./Details')}
             />
           )}
         />
