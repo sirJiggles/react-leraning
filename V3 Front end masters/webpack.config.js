@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
-module.exports = {
+const config = {
   mode: 'development',
   context: __dirname,
   entry: [
@@ -20,7 +20,11 @@ module.exports = {
     publicPath: '/public/'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.json']
+    extensions: ['.js', '.ts', '.tsx', '.json'],
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   },
   stats: {
     colors: true,
@@ -44,7 +48,8 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loaders: ['ts-loader'],
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
+        include: [path.resolve('js'), path.resolve('node_modules/preact-compat/src')]
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
     ]
@@ -54,3 +59,15 @@ module.exports = {
     'react-dom': 'ReactDOM'
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('----------------');
+  console.log('should be in here');
+
+  config.entry = './js/clientApp.tsx';
+  // no source maps
+  config.devtool = false;
+  config.plugins = [new CheckerPlugin()];
+}
+
+module.exports = config;

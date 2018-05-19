@@ -14,6 +14,7 @@ const webpack = require('webpack');
 // as this becomes an object with one key, default
 const App = require('./js/App').default;
 const webpackConfig = require('./webpack.config');
+const compression = require('compression');
 
 const staticRouter = ReactRouter.StaticRouter;
 // const sheet = new ServerStyleSheet();
@@ -32,6 +33,7 @@ server.use(
   })
 );
 server.use(webpackHotMiddleware(compiler));
+server.use(compression);
 
 // our static directory just like webpack config
 server.use('/public', express.static('./public'));
