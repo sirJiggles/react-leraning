@@ -7,7 +7,7 @@ import { RouteProps } from 'react-router';
 // fetch what you asked for then render
 class AsyncRoute extends Component {
   state: {
-    loaded: false
+    loaded: boolean
   };
 
   props: {
@@ -18,7 +18,8 @@ class AsyncRoute extends Component {
   // this is a class prop not in state as we do not care about changes for render
   component: React.ComponentClass = null;
 
-  componentWillMount() {
+  constructor(props: { props: any, loadingPromise: Promise<{ default: React.ComponentClass }> }) {
+    super(props);
     this.state = {
       loaded: false
     };
