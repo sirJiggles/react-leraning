@@ -1,25 +1,32 @@
 {
   "compilerOptions": {
     "types": [
+      "node",
       "react",
       "jest",
       "webpack-env",
       "react-router-dom",
       "react-dom",
-      "react-redux"
+      "react-redux",
+      "redux",
+      "styled-components",
+      "axios"
     ],
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "lib": [
       "dom",
-      "es2015"
+      "es2015",
+      "es2015.promise"
     ],
     "jsx": "react",
     "declaration": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "moduleResolution": "node"
+    // "allowSyntheticDefaultImports": true
   },
   "include": [
     "./js/**/*",

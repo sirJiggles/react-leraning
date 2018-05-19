@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, RouteProps } from 'react-router';
 import { Provider } from 'react-redux';
-import Landing from './Landing';
 import Search from './Search';
 import Details from './Details';
 import preload from './data';
 import store from './store';
 import InterfaceShow from './interfaces/Show';
+import AsyncRoute from './AsyncRoute';
 
 const FourOhFour = () => <h1>404</h1>;
 
@@ -16,7 +16,13 @@ const App = () => (
     <div className="app">
       {/* Only render ones that match */}
       <Switch>
-        <Route exact path="/" component={Landing} />
+        <Route
+          exact
+          path="/"
+          component={(props: RouteComponentProps<any>) => (
+            <AsyncRoute props={props} loadingPromise={import('./Landing')} />
+          )}
+        />
         <Route
           path="/search"
           component={(props: RouteComponentProps<any>) => (
